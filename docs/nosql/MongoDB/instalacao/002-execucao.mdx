@@ -1,0 +1,30 @@
+---
+id: mongodb-execucao-windows
+title: Execução
+sidebar_position: 2
+---
+
+# Como executar a solução após a instalação?
+
+A instalação no formato **zip** não cria um serviço do MongoDB. Ou seja, no cenário de execução no formato zip, será necessário a execução da instância de forma manual.
+
+:::note
+A instalação a partir do formato MSI cria uma entrada no services do Windows, dispensando o passo de subida manual.
+:::
+
+## Executando o servidor MongoDB de forma manual
+
+Para esse processo é necessário subir a engine do MongoDB por meio do utilitário **mondod**.
+
+<details>
+  <summary>Sobre a variável PATH</summary>
+  <div>
+    <div>Para esse passo o utilitário mongod deve estar configurado na variável PATH da sua sessão do Windows.</div>
+    <br/>
+  </div>
+</details>
+
+```bash
+mongod --dbpath c:\data\db    
+```
+
