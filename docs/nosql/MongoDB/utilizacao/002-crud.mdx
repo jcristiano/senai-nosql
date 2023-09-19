@@ -1,0 +1,58 @@
+---
+id: mongodb-utilizacao-crud
+title: Um pequeno ensaio com MongoDB
+sidebar_position: 2
+---
+
+# Executando um processo de CRUD com mongo
+
+CRUD são as quatro operações básicas do desenvolvimento de uma aplicação (**C:** Create, **R:** Read, **U:** Update, **D:** Delete). Outros acrônimos podem ser usados para definir as mesmas operações: ABCD: Add, Browse, Change and Delete BREAD: Browse, Read, Edit, Add and Delete
+
+### Como inserir uma coleção?
+```js
+db.usuarios.insertOne({nome: "Thiago", idade: 26, endereco: "Rua 4 de Marços S/N, Taubaté"});
+```
+
+### Como inserir uma coleção de objetos?
+
+```js
+db.usuarios.insertMany([
+  {nome: "Ana", idade: 34, endereco: "Rua das Palmeiras, Taubaté"},
+  {nome: "Marcos", idade: 15, endereco: "Rua 4 de Marços S/N, Taubaté"},
+  {nome: "João", idade: 28, endereco: "Avenida Central, São Paulo"},  
+]);
+```
+
+```js
+db.getCollection("usuarios").insertMany([
+  {nome: "Sofia", idade: 15, endereco: "Rua das Lavouras, Natal"},
+  {nome: "Mateus", idade: 32, endereco: "Avenida das Flores, João Pessoa"}
+]);
+```
+
+### Como ler dados da minha base?
+#### Exibir todo conteúdo de uma coleção
+```js
+db.usuarios.find();
+```
+```js
+db.usuarios.find({});
+```
+
+#### Lista conteúdo basedo em um filtro
+```js
+db.usuarios.find({"idade": {$gt: 18}});
+```
+```js
+db.usuarios.findOne({"idade": {$gt: 18}});
+```
+
+#### Trabalhando com projeção
+```js
+db.usuarios.find({"idade": {$gt: 18}}, {"_id":0, "nome": 1, "endereco": 1});
+```
+
+#### Removendo conteúdo de uma coleção
+```js
+db.usuarios.deleteMany({"idade": {$lt: 18}});
+```
