@@ -1,0 +1,47 @@
+---
+id: banco-mongodb-json-conceitos
+title: Importância do JSON
+sidebar_position: 2
+---
+
+# JSON veio para ficar
+
+Com o crescimento de serviços no começo do século, o tráfego de informações também aumentou, e foi preciso criar uma forma simples de enviar informações de um servidor para um web browser, sem a necessidade de nenhum plugin para funcionar (como Flash).
+
+Por esse motivo, Douglas Crockford identificou uma prática usada desde 1996 pela Netscape como a solução desse problema. Ele criou uma especificação para ela e batizou-a como otação de Objetos JavaScript (JavaScript Object Notation), ou simplesmente JSON
+
+A ideia é manter a simplicidade para transferir as informações, suportando tipos de dados bem simples:
+
+| Tipo      | Descrição |
+| ----------- | ----------- |
+| null | valor vazio |
+| Boolean | true ou false |
+| Number | número com sinal que pode ter um notação com **E** exponencial |
+| String | um sequência de um ou mais caracteres Unicode |
+| Object | um array não ordenado com itens do tipo chave-valor, onde todas as chaves devem ser strings distintas no mesmo objeto |
+| Array | lista ordenada de qualquer tipo, inteira entre colchetes e com cada elemento separado por vírgulas |
+
+Exemplo de uma informação baseada em JSON:
+
+```json
+[
+    {
+        titulo: "JSON x XML",
+        resumo: "o duelo de dois modelos de representação de informações",
+        ano: 2012,
+        genero: [
+            "aventura", 
+            "ação", 
+            "ficção"
+        ]
+    },
+   {
+        titulo: "JSON James",
+        resumo: "a história de uma lenda do velho oeste",
+        ano: 2012,
+        genero: [
+            "western"
+        ]
+    }
+]
+```
