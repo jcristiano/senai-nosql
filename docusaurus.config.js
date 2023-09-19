@@ -73,11 +73,10 @@ const config = {
         items: [
           {
             type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            sidebarId: 'nosqlSidebar',
             position: 'left',
-            label: 'Tutorial',
-          },
-          {to: '/blog', label: 'Blog', position: 'left'},
+            label: 'NoSQL',
+          },          
           {
             href: 'https://github.com/facebook/docusaurus',
             label: 'GitHub',
