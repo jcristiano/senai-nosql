@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksenai_nosql=self.webpackChunksenai_nosql||[]).push([[6795],{2910:s=>{s.exports=JSON.parse('{"permalink":"/senai-nosql/blog/tags/docusaurus","page":1,"postsPerPage":10,"totalPages":1,"totalCount":4,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);

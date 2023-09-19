@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksenai_nosql=self.webpackChunksenai_nosql||[]).push([[8685],{9723:s=>{s.exports=JSON.parse('{"label":"hello","permalink":"/senai-nosql/blog/tags/hello","allTagsPath":"/senai-nosql/blog/tags","count":2}')}}]);
