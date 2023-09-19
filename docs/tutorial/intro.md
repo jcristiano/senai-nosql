@@ -1,5 +1,7 @@
 ---
 sidebar_position: 1
+id: nosql-historia
+description: contexto historico do termo NoSQL
 ---
 
 # Tutorial Intro
