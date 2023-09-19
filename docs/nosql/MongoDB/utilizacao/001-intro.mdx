@@ -10,10 +10,47 @@ Para acessar uma instância do MongoDB podemos utilizar o utilitário [Mongo DB 
 
 ## Acessando a base
 
-Abra o interpretador de comando e execute a seguinte linha de comando para conectar a instância em execução.
+Abra o interpretador de comando e execute a seguinte linha de comando para conectar à instância em execução.
 
-```cmd
+```powershell
 mongosh --host localhost
 ```
 
 ### Listando as bases disponíveis
+
+```
+> show dbs
+```
+
+```
+> show database
+```
+
+### Como criar um novo banco?
+```bash
+> use senai;
+> show dbs;
+#nenhum conteúdo sobre a base do senai será exibo
+```
+
+### Como inserir uma coleção?
+```js
+db.usuarios.insertOne({usuario: "Thiago", idade: 26, endereco: "Rua 4 de Marços S/N, Taubaté"});
+```
+
+### Como inserir uma coleção de objetos?
+
+```js
+db.usuarios.insertMany([
+  {usuario: "Ana", idade: 34, endereco: "Rua das Palmeiras, Taubaté"},
+  {usuario: "Marcos", idade: 15, endereco: "Rua 4 de Marços S/N, Taubaté"},
+  {usuario: "João", idade: 28, endereco: "Avenida Central, São Paulo"},  
+]);
+```
+
+```js
+db.usuarios.insertMany([
+  {usuario: "Sofia", idade: 15, endereco: "Rua das Lavouras, Natal"},
+  {usuario: "Mateus", idade: 32, endereco: "Avenida das Flores, João Pessoa"}
+]);
+```
