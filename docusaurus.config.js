@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Banco de Dados - ADS SENAI',
   tagline: 'Abordagem NoSQL',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/laptop.ico',
 
   // Set the production url of your site here
   url: 'https://github.com',
