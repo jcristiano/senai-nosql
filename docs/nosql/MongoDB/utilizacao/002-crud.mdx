@@ -2,6 +2,9 @@
 id: mongodb-utilizacao-crud
 title: Um pequeno ensaio com MongoDB
 sidebar_position: 2
+tags:
+  - crud
+  - collections
 ---
 
 # Executando um processo de CRUD com mongo
@@ -9,8 +12,15 @@ sidebar_position: 2
 CRUD são as quatro operações básicas do desenvolvimento de uma aplicação (**C:** Create, **R:** Read, **U:** Update, **D:** Delete). Outros acrônimos podem ser usados para definir as mesmas operações: ABCD: Add, Browse, Change and Delete BREAD: Browse, Read, Edit, Add and Delete
 
 ### Como inserir uma coleção?
+No momento 
 ```js
 db.usuarios.insertOne({nome: "Thiago", idade: 26, endereco: "Rua 4 de Marços S/N, Taubaté"});
+```
+
+Também é possível inserir uma nova coleção com o seguinte comando:
+
+```js
+db.createCollection('usuarios');
 ```
 
 ### Como inserir uma coleção de objetos?
