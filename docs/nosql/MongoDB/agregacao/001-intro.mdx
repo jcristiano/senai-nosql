@@ -1,0 +1,28 @@
+---
+id: agregacao-conceito-pipeline
+slug: agregacao-conceito-pipeline
+title: Conceitos sobre pipelines
+sidebar_position: 1
+tags:
+    - pipeline
+---
+
+# Sobre pipelines
+
+Em um contexto mais amplo e conceitual, o termo "pipeline" refere-se a um sistema ou processo que consiste em uma sequência de etapas interconectadas que trabalham juntas para realizar uma tarefa ou atingir um objetivo específico. Embora seu uso mais comum seja na computação, como discutido anteriormente, o conceito de pipeline pode ser aplicado em diversas áreas, incluindo manufatura, gestão de projetos, produção, logística e até mesmo em contextos não técnicos.
+
+A ideia fundamental por trás de um pipeline é otimizar o fluxo de trabalho, dividindo uma tarefa complexa em etapas menores, cada uma executada de forma eficiente e consecutiva. Isso geralmente resulta em um processo mais organizado e eficaz.
+
+## Pipeline em Sistemas Operacionais
+
+Em sistemas operacionais Unix e Unix-like, o operador "|" (pipe) é utilizado para criar um pipeline, que é uma sequência de comandos interconectados em que a saída do comando anterior é a entrada do comando seguinte. Isso permite a construção de fluxos de processamento de dados complexos e eficientes. Por exemplo:
+
+```bash
+ls -l | grep .txt | sort
+```
+
+Neste exemplo, o comando `ls -l` lista os arquivos no diretório atual e a saída é passada para o comando `grep .txt`, que filtra os arquivos com extensão `.txt`. Em seguida, a saída é ordenada alfabeticamente pelo comando `sort`.
+
+## Pipeline de Agregação no MongoDB
+
+No MongoDB, o conceito de pipeline também é aplicado na etapa de agregação de dados. A agregação é o processo de transformar e processar documentos em uma coleção para obter resultados desejados. O MongoDB fornece uma estrutura de pipeline de agregação que consiste em uma sequência de estágios, onde cada estágio é um operador que manipula os dados de entrada e passa o resultado para o próximo estágio.
