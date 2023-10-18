@@ -331,3 +331,96 @@ Aplique os ajustes necessários para inserir o seguinte documento na coleção d
     ]
 }
 ```
+
+<details>
+<summary>Resposta sugerida</summary>
+
+```json
+db.setores.insertOne(
+{
+    _id: 3,
+    nome: "Tecnologia e Engenharia",
+    sigla: "GTE",
+    funcionarios: [
+        {
+            _id: 5,
+            nome: "Pedro Antunes Silva Barros",
+            cargo: "Estagiário",
+            modulo: 0,
+            salario: Double(2200.00),
+            dataContratacao: new ISODate("2021-10-21"),
+            ativo: true
+        },
+        {            
+            _id: 6,
+            nome: "Caroline Gouvea do Prado",
+            cargo: "Desenvolvedor FullStack",
+            modulo: 4,
+            salario: 18246.78,
+            dataContratacao: new ISODate("2011-02-01"),
+            ativo: true
+        },
+        {          
+            _id: 7,  
+            nome: "Alisson Mendonça Pereira",
+            cargo: "Analista de DevOps",
+            modulo: 2,
+            salario: 8451.89,
+            dataContratacao: new ISODate("2018-07-07"),
+            ativo: true
+        },
+    ]
+});
+```
+</details>
+
+
+## Exercícios Propostos
+
+1. Faça uma busca por todos os funcionários onde os seguintes critérios devem ser atendidos:
+<ol>
+    <li>Filtrar os funcionários onde o mês de contratação corresponda a outubro.</li>
+    <li>A saída deve estar ordenada pela `sigla` do setor e pelo nome do funcionário.</li>
+    <li>Deve ser exibido apenas o nome do funcionário e o setor correspondente.</li>
+</ol>
+
+Segue um exemplo da saída esperada:
+
+```json
+[
+    {
+        nome: "Anderson Campos Monteiro",
+        setor: "Recursos Humanos"
+    },
+    {
+        nome: "Pedro Antunes Silva Barros",
+        setor: "Tecnologia e Engenharia"
+    }
+]
+```
+
+<details>
+<summary>Possível solução</summary>
+
+```json
+db.setores.aggregate(
+  {
+      $unwind: "$funcionarios"
+  },{
+    $match: {
+        $expr: {
+            $eq: [{ $month: "$funcionarios.dataContratacao" }, 10] 
+        }
+    }
+  },{
+      $sort: { sigla: 1, "funcionarios.nome": 1 }
+  },{
+    $project: {
+        _id: 0,
+        nome: "$funcionarios.nome",
+        setor: "$nome"
+    }
+  }
+);
+```
+</details>
