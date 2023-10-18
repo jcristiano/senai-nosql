@@ -78,7 +78,7 @@ const config = {
             label: 'NoSQL',
           },          
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/jcristiano/dbsn202303',
             label: 'GitHub',
             position: 'right',
           },
