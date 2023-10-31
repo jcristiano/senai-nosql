@@ -1,0 +1,28 @@
+---
+id: relacionamento-um-para-muitos-atividades-cinco
+slug: relacionamento-um-para-muitos-atividades-cinco
+title: Exercício 005
+sidebar_position: 5
+tags:
+    - atividade
+    - operadores
+    - agregação
+---
+
+# Encontre todos os funcionários contratados em 2022
+
+```javascript
+db.setores.aggregate([
+  {
+    $unwind: "$funcionarios"
+  },
+  {
+    $match: {
+      "funcionarios.dataContratacao": {
+        $gte: ISODate("2022-01-01"),
+        $lt: ISODate("2023-01-01")
+      }
+    }
+  }
+]);
+```

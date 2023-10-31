@@ -1,0 +1,30 @@
+---
+id: relacionamento-um-para-muitos-atividades-tres
+slug: relacionamento-um-para-muitos-atividades-tres
+title: Exercício 003
+sidebar_position: 3
+tags:
+    - atividade
+    - operadores
+    - agregação
+---
+
+# Liste todos os funcionários que ganham mais do que 5000 de salário
+
+```javascript
+db.setores.aggregate([
+  {
+    $unwind: "$funcionarios"
+  },
+  {
+    $match: { "funcionarios.salario": { $gt: 5000 } }
+  },
+  {
+    $project: {
+      _id: "$funcionarios._id",
+      nome: "$funcionarios.nome",
+      salario: "$funcionarios.salario"
+    }
+  }
+]);
+```

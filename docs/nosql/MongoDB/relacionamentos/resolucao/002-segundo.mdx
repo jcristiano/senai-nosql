@@ -1,0 +1,35 @@
+---
+id: relacionamento-um-para-muitos-atividades-dois
+slug: relacionamento-um-para-muitos-atividades-dois
+title: Exercício 002
+sidebar_position: 2
+tags:
+    - atividade
+    - operadores
+    - agregação
+---
+
+# Encontre o setor com o maior número de funcionários ativos
+```javascript title="Exemplo de consulta com pipeline"
+db.setores.aggregate([
+  {
+    $unwind: "$funcionarios"
+  },
+  {
+    $match: { "funcionarios.ativo": true }
+  },
+  {
+    $group: {
+      _id: "$_id",
+      totalFuncionariosAtivos: { $sum: 1 },
+      setor: { $first: "$nome" }
+    }
+  },
+  {
+    $sort: { totalFuncionariosAtivos: -1 }
+  },
+  {
+    $limit: 1
+  }
+]);
+```

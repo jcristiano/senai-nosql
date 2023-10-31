@@ -1,0 +1,26 @@
+---
+id: relacionamento-um-para-muitos-atividades-quatro
+slug: relacionamento-um-para-muitos-atividades-quatro
+title: Exercício 004
+sidebar_position: 4
+tags:
+    - atividade
+    - operadores
+    - agregação
+---
+
+# Agrupe os setores por sigla e calcule a média de salário dos funcionários em cada setor
+
+```javascript
+db.setores.aggregate([
+  {
+    $unwind: "$funcionarios"
+  },
+  {
+    $group: {
+      _id: "$sigla",
+      mediaSalario: { $avg: "$funcionarios.salario" }
+    }
+  }
+]);
+```
