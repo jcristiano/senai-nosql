@@ -1,0 +1,38 @@
+---
+id: relacionamento-um-para-muitos-atividades-dez
+slug: relacionamento-um-para-muitos-atividades-dez
+title: Exercício 010
+sidebar_position: 10
+tags:
+    - atividade
+    - operadores
+    - agregação
+---
+
+# Encontre o setor com o maior número de funcionários no módulo 2
+
+```javascript
+db.setores.aggregate([
+  {
+    $unwind: "$funcionarios"
+  },
+  {
+    $match: {
+      "funcionarios.modulo": 2
+    }
+  },
+  {
+    $group: { 
+        _id: "$sigla", 
+        setor: { $first: "$nome" },
+        totalFuncionariosModulo2: { $sum: 1 }
+    }
+  },
+  {
+    $sort: { totalFuncionariosModulo2: -1 }
+  },
+  {
+    $limit: 1
+  }
+]);
+```

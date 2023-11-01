@@ -1,0 +1,29 @@
+---
+id: relacionamento-um-para-muitos-atividades-sete
+slug: relacionamento-um-para-muitos-atividades-sete
+title: Exercício 007
+sidebar_position: 7
+tags:
+    - atividade
+    - operadores
+    - agregação
+---
+
+# Encontre o funcionário mais antigo (baseado na data de contratação) de cada setor
+
+```javascript
+db.setores.aggregate([
+  {
+    $unwind: "$funcionarios"
+  },
+  {
+    $sort: { "funcionarios.dataContratacao": 1 }
+  },
+  {
+    $group: { 
+        _id: "$sigla",
+        funcionario: { $first: "$funcionarios.nome" }
+    }
+  }
+]);
+```

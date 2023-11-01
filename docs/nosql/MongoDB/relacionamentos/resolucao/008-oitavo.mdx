@@ -1,0 +1,29 @@
+---
+id: relacionamento-um-para-muitos-atividades-oito
+slug: relacionamento-um-para-muitos-atividades-oito
+title: Exercício 008
+sidebar_position: 8
+tags:
+    - atividade
+    - operadores
+    - agregação
+---
+
+# Calcule o total de salários pagos a todos os funcionários ativos
+
+```javascript
+db.setores.aggregate([
+  {
+    $unwind: "$funcionarios"
+  },
+  {
+    $match: { "funcionarios.ativo": true }
+  },
+  {
+    $group: { 
+        _id: 0, 
+        totalSalario: { $sum: "$funcionarios.salario"}
+    }
+  }
+]);
+```

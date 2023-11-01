@@ -1,0 +1,33 @@
+---
+id: relacionamento-um-para-muitos-atividades-nove
+slug: relacionamento-um-para-muitos-atividades-nove
+title: Exercício 009
+sidebar_position: 9
+tags:
+    - atividade
+    - operadores
+    - agregação
+---
+
+# Liste todos os funcionários que estão no módulo 3 e têm salário superior a 4000
+
+```javascript
+db.setores.aggregate([
+  {
+    $unwind: "$funcionarios"
+  },
+  {
+    $match: {
+      "funcionarios.modulo": 3,
+      "funcionarios.salario": { $gt: 4000 }
+    }
+  },
+  {
+    $project: {
+        _id: 0,
+        funcionario: "$funcionarios.nome",
+        salario: "$funcionarios.salario"
+    }
+  }
+]);
+```
