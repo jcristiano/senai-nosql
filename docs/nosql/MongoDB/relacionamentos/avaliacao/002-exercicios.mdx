@@ -1,0 +1,277 @@
+---
+id: relacionamento-um-para-muitos-avaliacao-exercicios
+slug: relacionamento-um-para-muitos-avaliacao-exercicios
+title: Exercícios
+sidebar_position: 2
+tags:
+    - atividade    
+    - avaliacao
+---
+
+# Exercícios como atividade
+
+Cada exercício é composto por um enunciado e um peso correspondente. O aluno deve escolher uma coleção de exercícios de tal forma que a soma dos correspondentes pesos forme o valor 10.
+
+## Total de jogos por categoria (Peso 4)
+
+### Enunciado
+
+Escreva uma consulta que retorne o número total de jogos em cada categoria. A saída deve incluir o nome da categoria e a contagem de jogos.
+
+<details>
+<summary>Exemplo de saída</summary>
+
+```javascript
+/* 1 */
+{
+	"total_jogos" : 1,
+	"categoria" : "RPG"
+},
+
+/* 2 */
+{
+	"total_jogos" : 2,
+	"categoria" : "Esportes"
+},
+
+/* 3 */
+{
+	"total_jogos" : 1,
+	"categoria" : "Aventura"
+},
+
+/* 4 */
+{
+	"total_jogos" : 2,
+	"categoria" : "Simulação"
+},
+
+/* 5 */
+{
+	"total_jogos" : 3,
+	"categoria" : "Ação"
+}
+```
+</details>
+
+
+## Lista de categorias (Peso 2)
+
+### Enunciado
+
+Escreva uma consulta que retorne todas as categorias cadastradas e a correspondente sigla. A saída deve ser ordenada pela sigla da categoria na ordem inversa.
+
+<details>
+<summary>Exemplo de saída</summary>
+
+```javascript
+/* 1 */
+{
+	"categoria" : "Simulação",
+	"sigla" : "SIM"
+},
+
+/* 2 */
+{
+	"categoria" : "RPG",
+	"sigla" : "RPG"
+},
+
+/* 3 */
+{
+	"categoria" : "Esportes",
+	"sigla" : "ES"
+},
+
+/* 4 */
+{
+	"categoria" : "Aventura",
+	"sigla" : "ADV"
+},
+
+/* 5 */
+{
+	"categoria" : "Ação",
+	"sigla" : "AC"
+}
+```
+</details>
+
+## Lista de títulos (Peso 2)
+
+### Enunciado
+
+Escreva uma consulta que retorne o nome de todos os títulos cadastrados. A saída deve estar ordernada de forma crescente.
+
+<details>
+<summary>Exemplo de saída</summary>
+
+```javascript
+/* 1 */
+{
+	"titulo" : "Assassin's Creed Valhalla"
+},
+
+/* 2 */
+{
+	"titulo" : "Call of Duty: Warzone"
+},
+
+/* 3 */
+{
+	"titulo" : "Cities: Skylines"
+},
+
+/* 4 */
+{
+	"titulo" : "FIFA 22"
+},
+
+/* 5 */
+{
+	"titulo" : "NBA 2K22"
+},
+
+/* 6 */
+{
+	"titulo" : "Red Dead Redemption 2"
+},
+
+/* 7 */
+{
+	"titulo" : "The Legend of Zelda: Breath of the Wild"
+},
+
+/* 8 */
+{
+	"titulo" : "The Sims 4"
+},
+
+/* 9 */
+{
+	"titulo" : "The Witcher 3: Wild Hunt"
+}
+```
+</details>
+
+
+## Jogo mais caro por categoria (Peso 8)
+
+### Enunciado
+
+Escreva uma consulta que retorne o jogo mais caro em cada categoria. A saída deve incluir o nome da categoria, o nome do jogo e o valor mais alto.
+
+<details>
+<summary>Exemplo de saída</summary>
+
+```javascript
+/* 1 */
+{
+	"categoria" : "RPG",
+	"jogo_mais_caro" : "The Witcher 3: Wild Hunt",
+	"valor" : 29.99
+},
+
+/* 2 */
+{
+	"categoria" : "Esportes",
+	"jogo_mais_caro" : "NBA 2K22",
+	"valor" : 49.99
+},
+
+/* 3 */
+{
+	"categoria" : "Aventura",
+	"jogo_mais_caro" : "The Legend of Zelda: Breath of the Wild",
+	"valor" : 49.99
+},
+
+/* 4 */
+{
+	"categoria" : "Simulação",
+	"jogo_mais_caro" : "The Sims 4",
+	"valor" : 19.99
+},
+
+/* 5 */
+{
+	"categoria" : "Ação",
+	"jogo_mais_caro" : "Red Dead Redemption 2",
+	"valor" : 39.99
+}
+```
+</details>
+
+## Categorias com mais de 2 títulos disponíveis (Peso 6)
+
+### Enunciado
+
+Escreva uma consulta que retorne as categorias que têm mais de 2 títulos disponíveis. A saída deve incluir o nome da categoria e o número de títulos.
+
+<details>
+<summary>Exemplo de saída</summary>
+
+```javascript
+{
+	"nome" : "Ação",
+	"num_titulos" : 3
+}
+```
+</details>
+
+## Lista de todas as plataformas disponíveis (Peso 6)
+
+### Enunciado
+
+Escreva uma consulta que retorne uma lista de todas as plataformas disponíveis nos jogos. A saída deve ser uma matriz única de plataformas, sem repetições.
+
+<details>
+<summary>Exemplo de saída</summary>
+
+```javascript
+{
+	"plataformas" : [ "Nintendo Switch", "PC", "XBox", "PlayStation" ]
+}
+```
+</details>
+
+
+## Jogos lançados após 2019 (Peso 4)
+
+### Enunciado
+
+Escreva uma consulta que retorne os jogos lançados após o ano de 2019. A saída deve incluir o nome do jogo, a categoria à qual ele pertence e a data de lançamento.
+
+<details>
+<summary>Exemplo de saída</summary>
+
+```javascript
+/* 1 */
+{
+	"jogo" : "Call of Duty: Warzone",
+	"categoria" : "Ação",
+	"data_lancamento" : ISODate("2020-03-09T21:00:00.000-03:00")
+},
+
+/* 2 */
+{
+	"jogo" : "Assassin's Creed Valhalla",
+	"categoria" : "Ação",
+	"data_lancamento" : ISODate("2020-11-09T21:00:00.000-03:00")
+},
+
+/* 3 */
+{
+	"jogo" : "FIFA 22",
+	"categoria" : "Esportes",
+	"data_lancamento" : ISODate("2021-09-30T21:00:00.000-03:00")
+},
+
+/* 4 */
+{
+	"jogo" : "NBA 2K22",
+	"categoria" : "Esportes",
+	"data_lancamento" : ISODate("2021-09-09T21:00:00.000-03:00")
+}
+```
+</details>
