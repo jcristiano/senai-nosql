@@ -1,0 +1,86 @@
+---
+id: conexao-nodejs-mongo
+slug: conexao-nodejs-mongo
+title: CRUD NodeJS
+sidebar_position: 7
+---
+
+# exemplo de conexao
+
+```javascript title=config/db.js
+const mongoose = require("mongoose");
+ 
+module.exports = function connectDB() {
+  const url = "mongodb://127.0.0.1/minha_applicacao_node";
+ 
+  try {
+    mongoose.connect(url, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+  } catch (err) {
+    console.error(err.message);
+    process.exit(1);
+  }
+  const dbConnection = mongoose.connection;
+  dbConnection.once("open", (_) => {
+    console.log(`Database connected: ${url}`);
+  });
+ 
+  dbConnection.on("error", (err) => {
+    console.error(`connection error: ${err}`);
+  });
+  return dbConnection;
+}
+```
+
+```javascript title=index.js
+const express = require('express');
+const mongoose = require("mongoose");
+const connectDB = require("./config/db.js"); 
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+connectDB();
+
+app.get("/", (request, response) => {
+    response.send({ message: "Hello from an Express API!" });
+});
+
+app.listen(PORT, () => {
+console.log(`Server running at http://localhost:${PORT}`);
+});
+
+
+const usuarioSchema = new mongoose.Schema({
+    nome: String,
+    idade: Number,
+  });
+  
+const usuarioModel = mongoose.model('dados', usuarioSchema);
+
+
+app.get('/usuarios', async (req, res) => {
+    try {
+        const model = await usuarioModel.find();
+        res.json(model);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+app.post('/usuarios', async (req, res) => {
+    const model = new usuarioModel(req.body);
+  
+    try {
+      const novoExemplo = await model.save();
+      res.status(201).json(novoExemplo);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  });
+```
