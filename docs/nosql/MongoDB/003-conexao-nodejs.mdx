@@ -84,3 +84,41 @@ app.post('/usuarios', async (req, res) => {
     }
   });
 ```
+
+## Metodo PUT
+
+```javascript
+app.put('/usuarios/:id', async (req, res) => {
+    const { id } = req.params;
+  
+    try {
+      const model = await usuarioModel.findByIdAndUpdate(id, req.body, { new: true });
+      if (!model) {
+        return res.status(404).json({ message: 'Item não encontrado' });
+      }
+  
+      res.json(model);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+```
+
+## Metodo DELETE
+
+```javascript
+app.delete('/usuarios/:id', async (req, res) => {
+    const { id } = req.params;
+  
+    try {
+      const model = await usuarioModel.findByIdAndDelete(id);
+      if (!model) {
+        return res.status(404).json({ message: 'Item não encontrado' });
+      }
+  
+      res.json({ message: 'Item excluído com sucesso' });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+```
